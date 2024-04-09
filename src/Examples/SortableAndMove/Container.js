@@ -1,7 +1,7 @@
 import update from "immutability-helper";
 import { useCallback, useState } from "react";
 import { Card } from "./Card.js";
-import DragBox from "@Common/DragBox.js";
+import DragArea from "@Common/DragArea";
 const style = {
   width: 400,
   marginLeft: 30,
@@ -35,11 +35,6 @@ export const Container = () => {
     },
   ]);
 
-  const [boxes] = useState([
-    { id: "1", title: "Drag me around" },
-    { id: "2", title: "Drag me too" },
-  ]);
-
   const moveCard = useCallback((dragIndex, hoverIndex) => {
     setCards((prevCards) =>
       update(prevCards, {
@@ -51,38 +46,41 @@ export const Container = () => {
     );
   }, []);
 
-  const updateCard = useCallback((id, item, op) => {
-    if (op === "add") {
+  const updateCard = useCallback(
+    (id, item, op) => {
+      if (op === "add") {
+        setCards((prevCards) =>
+          prevCards.map((card) => {
+            return card.id === id
+              ? {
+                  ...card,
+                  childList: [
+                    ...card.childList,
+                    { ...item, id: new Date().getTime() },
+                  ],
+                }
+              : card;
+          })
+        );
+        return;
+      }
       setCards((prevCards) =>
-        prevCards.map((card) => {
-          return card.id === id
+        prevCards?.map((card) => {
+          return card?.id === id
             ? {
                 ...card,
-                childList: [
-                  ...card.childList,
-                  { ...item, id: new Date().getTime() },
-                ],
+                childList: card?.childList?.map((child) => {
+                  return child?.id === item?.id
+                    ? { ...item, top: item?.top, left: item?.left }
+                    : child;
+                }),
               }
             : card;
         })
       );
-      return;
-    }
-    setCards((prevCards) =>
-      prevCards?.map((card) => {
-        return card?.id === id
-          ? {
-              ...card,
-              childList: card?.childList?.map((child) => {
-                return child?.id === item?.id
-                  ? { ...item, top: item?.top, left: item?.left }
-                  : child;
-              }),
-            }
-          : card;
-      })
-    );
-  }, [cards, setCards]);
+    },
+    [cards, setCards]
+  );
 
   const renderCard = useCallback((card, index) => {
     return (
@@ -99,17 +97,7 @@ export const Container = () => {
   }, []);
   return (
     <div style={{ display: "flex" }}>
-      <div
-        style={{
-          width: "300px",
-          height: "150px",
-          border: "1px solid black",
-        }}
-      >
-        {boxes.map(({ id, title }) => {
-          return <DragBox key={id} id={id} title={title}></DragBox>;
-        })}
-      </div>
+      <DragArea />
       <div style={style}>{cards.map((card, i) => renderCard(card, i))}</div>
     </div>
   );
