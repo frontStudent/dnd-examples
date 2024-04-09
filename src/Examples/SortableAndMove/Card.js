@@ -1,9 +1,8 @@
 import { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
-import { ItemTypes } from "./ItemTypes.js";
-import { StyledBox } from "./StyledBox.js";
-import { MoveBox } from "./MoveBox.js";
-import { Rnd } from "react-rnd";
+import { ItemTypes } from "@Common/ItemTypes";
+import MoveBox from "@Common/MoveBox";
+// import { Rnd } from "react-rnd";
 const style = {
   border: "1px dashed gray",
   padding: "0.5rem 1rem",

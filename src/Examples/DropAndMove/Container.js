@@ -1,9 +1,9 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useDrop } from "react-dnd";
 import { StyledBox } from "./StyledBox.js";
-import { DragBox } from "./DragBox.js";
-import { MoveBox } from "./MoveBox.js";
-import { ItemTypes } from "./ItemTypes.js";
+import { DragBox } from "../Common/DragBox.js";
+import { MoveBox } from "../Common/MoveBox.js";
+import { ItemTypes } from "../Common/ItemTypes.js";
 
 import "./index.css";
 const styles = {

@@ -2,7 +2,7 @@ import { useDrag } from "react-dnd";
 import { ItemTypes } from "./ItemTypes.js";
 import { StyledBox } from "./StyledBox.js";
 
-export const DragBox = ({ id, title }) => {
+const DragBox = ({ id, title }) => {
   const [{ isDragging }, drag] = useDrag(
     () => ({
       type: ItemTypes.BOX,
@@ -19,3 +19,4 @@ export const DragBox = ({ id, title }) => {
     </StyledBox>
   );
 };
+export default DragBox;

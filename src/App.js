@@ -1,6 +1,6 @@
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Container } from "./Examples/Sortable/Container";
+import { Container } from "./Examples/SortableAndMove/Container";
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import update from "immutability-helper";
 import { useCallback, useState } from "react";
 import { Card } from "./Card.js";
-import { DragBox } from "./DragBox.js";
+import DragBox from "@Common/DragBox.js";
 const style = {
   width: 400,
   marginLeft: 30,
@@ -35,13 +35,10 @@ export const Container = () => {
     },
   ]);
 
-  const [boxes, setBoxes] = useState([
+  const [boxes] = useState([
     { id: "1", title: "Drag me around" },
     { id: "2", title: "Drag me too" },
   ]);
-
-  const [width, setWidth] = useState(300);
-  const [height, setHeight] = useState(150);
 
   const moveCard = useCallback((dragIndex, hoverIndex) => {
     setCards((prevCards) =>
