@@ -1,9 +1,13 @@
-import React from "react";
-import {Button} from "antd";
-const App = () => {
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { Container } from "./Examples/Sortable/Container";
+
+function App() {
   return (
     <div className="App">
-        <Button>antd</Button>
+      <DndProvider backend={HTML5Backend}>
+        <Container hideSourceOnDrag={true}/>
+      </DndProvider>
     </div>
   );
 }
