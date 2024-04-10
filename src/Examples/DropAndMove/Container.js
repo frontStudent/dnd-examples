@@ -8,7 +8,7 @@ const styles = {
   width: 300,
   height: 300,
   border: "1px solid black",
-  // position: "relative",
+  marginLeft: 30,
 };
 export const Container = () => {
   const [moveBoxes, setMoveBoxes] = useState([]);
@@ -66,7 +66,7 @@ export const Container = () => {
     [moveBoxes, setMoveBoxes]
   );
   return (
-    <div style={{ margin: "20px 30px" }}>
+    <div style={{ display: 'flex' }}>
       <DragArea />
       <div ref={drop} style={styles}>
         {moveBoxes.map(({ id, title, top, left }) => {

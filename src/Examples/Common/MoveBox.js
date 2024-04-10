@@ -13,7 +13,7 @@ const MoveBox = ({ id, title, style }) => {
     }),
     [id]
   );
-  if (isDragging && true) return <div ref={drag} />;
+  if (isDragging) return <div ref={drag} />;
   return (
     <StyledBox ref={drag} style={style}>
       {title}
