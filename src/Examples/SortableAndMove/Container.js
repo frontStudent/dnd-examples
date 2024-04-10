@@ -22,17 +22,7 @@ export const Container = () => {
       id: 3,
       text: "Write README",
       childList: [],
-    },
-    {
-      id: 4,
-      text: "Create some examples",
-      childList: [],
-    },
-    {
-      id: 5,
-      text: "Spam in Twitter and IRC to promote it",
-      childList: [],
-    },
+    }
   ]);
 
   const moveCard = useCallback((dragIndex, hoverIndex) => {

@@ -6,7 +6,7 @@ const DragBox = ({ id, title }) => {
   const [, drag] = useDrag(
     () => ({
       type: ItemTypes.BOX,
-      item: { id, title },
+      item: { id, title, width: 150, height: 30 },
       // collect: (monitor) => ({
       //   isDragging: monitor.isDragging(),
       // }),
