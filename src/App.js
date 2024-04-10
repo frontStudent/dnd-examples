@@ -27,6 +27,7 @@ function App() {
           <li>从物料区拖到Drop区域使用react-dnd来实现</li>
           <li>拖拽排序使用react-sortablejs实现</li>
           <li>在列表项内部拖动使用react-rnd实现</li>
+          <li>列表项的尺寸调整使用react-resizable实现</li>
         </h3>
         <C3 />
       </DndProvider>
